@@ -38,6 +38,7 @@ testem.log
 /typings
 /.agents/
 /AGENT.MD
+/.interface-design/
 
 # System files
 .DS_Store
