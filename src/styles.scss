@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+html {
+  scroll-behavior: smooth;
+  background: #fbfaf7;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  background: #fbfaf7;
+  overflow-x: clip;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

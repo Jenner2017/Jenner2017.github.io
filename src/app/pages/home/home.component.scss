@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+.home {
+  background: #fbfaf7;
+  color: #111827;
+  scroll-behavior: smooth;
+  min-height: 100vh;
+}
+
+.home__section {
+  width: min(1120px, calc(100% - 3rem));
+  margin: 0 auto;
+  padding: 5rem 0;
+}

@@ -1,6 +1,8 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
+process.env.CHROME_BIN ||= 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe';
+
 module.exports = function (config) {
   config.set({
     basePath: '',
@@ -10,7 +12,6 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
       jasmine: {

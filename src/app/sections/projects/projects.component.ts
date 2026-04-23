@@ -1,15 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss']
+  styleUrls: ['./projects.component.scss'],
+  standalone: true
 })
-export class ProjectsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class ProjectsComponent {
+  protected readonly projects = [
+    {
+      title: 'RTU Digital',
+      description: 'Digital procedures management system with REST service integration and microservices architecture for the Superintendencia de Administración Tributaria (SAT).',
+      tags: ['Spring Boot', 'PostgreSQL', 'Angular', 'Docker', 'AWS', 'Alfresco'],
+      link: '#'
+    },
+    {
+      title: 'Public Function Assistants System (AFP)',
+      description: 'System for managing public function assistants in Guatemala, including features for data queries, process management, and report generation.',
+      tags: ['Spring Boot', 'PostgreSQL', 'Oracle', 'Angular', 'Docker', 'AWS', 'Alfresco'],
+      link: '#'
+    },
+    {
+      title: 'Authorized Economic Operator System (OEA)',
+      description: 'System for managing authorized economic operators, including data queries, process management, and reporting functionalities.',
+      tags: ['Spring Boot', 'PostgreSQL', 'Oracle', 'Angular', 'Docker', 'AWS', 'Alfresco'],
+      link: '#'
+    },
+    {
+      title: 'Courier Management System',
+      description: 'System for managing the reception and shipment of goods for the Superintendencia de Administración Tributaria (SAT).',
+      tags: ['Spring Boot', 'PostgreSQL', 'Oracle', 'Angular', 'Docker', 'AWS', 'Alfresco'],
+      link: '#'
+    },
+    {
+      title: 'Document Management Pilot System',
+      description: 'Pilot system for document management at the Superintendencia de Administración Tributaria (SAT), including storage, retrieval, and document lifecycle management.',
+      tags: ['Spring Boot', 'PostgreSQL', 'Oracle', 'Angular', 'Docker', 'AWS', 'Alfresco'],
+      link: '#'
+    },
+    {
+      title: 'Temporary Business Closure System',
+      description: 'System for managing temporary business closures for the Superintendencia de Administración Tributaria (SAT).',
+      tags: ['Spring Boot', 'PostgreSQL', 'Oracle', 'Angular', 'Docker', 'AWS', 'Alfresco'],
+      link: '#'
+    }
+  ];
 
 }

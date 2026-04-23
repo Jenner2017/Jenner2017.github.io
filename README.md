@@ -1,27 +1,87 @@
-# PortfolioSite
+# Portfolio Site
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
+Personal portfolio built with Angular 21, TypeScript, and SCSS.
 
-## Development server
+The site is organized as a single-page experience with section-based navigation and a floating dock in the hero area.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Stack
 
-## Code scaffolding
+- Angular 21
+- TypeScript
+- SCSS
+- Standalone components
+- Karma + Jasmine for unit tests
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Available Scripts
+
+Run commands from the project root:
+
+- `npm install` installs dependencies
+- `npm start` starts the development server
+- `npm run build` creates the production build in `dist/portfolio-site`
+- `npm run watch` builds in watch mode for development
+- `npm test` runs unit tests
+
+## App Structure
+
+Main shell:
+- `src/app/app.component.ts`
+
+Home page:
+- `src/app/pages/home/`
+
+Sections:
+- `src/app/sections/hero/`
+- `src/app/sections/about/`
+- `src/app/sections/skills/`
+- `src/app/sections/experience/`
+- `src/app/sections/projects/`
+- `src/app/sections/education/`
+
+Shared components:
+- `src/app/shared/components/navbar/`
+- `src/app/shared/components/footer/`
+
+Global styles:
+- `src/styles.scss`
+
+## Current Design Notes
+
+- The site uses a light canvas with subtle borders and soft surfaces.
+- The current accent direction is neutral and centered on `#6b7280`.
+- The hero section includes a floating dock for navigating to page anchors.
+- `experience` and `education` use a similar timeline-style layout.
+
+## Development Notes
+
+- Components are implemented as standalone Angular components.
+- Content-heavy sections are mostly data-driven from arrays inside their component `.ts` files.
+- When updating section names or anchors, also update the hero dock and navbar links.
+
+## Local Development
+
+Start the app with:
+
+```bash
+npm start
+```
+
+Then open `http://localhost:4200/`.
+
+## Testing
+
+Run:
+
+```bash
+npm test
+```
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run:
 
-## Running unit tests
+```bash
+npm run build
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The production output is generated in `dist/portfolio-site`.

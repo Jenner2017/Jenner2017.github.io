@@ -1,1 +1,19 @@
-<p>skills works!</p>
+<section class="skills" aria-labelledby="skills-title">
+  <header class="section-header">
+    <h2 id="skills-title" class="section-title">Skills</h2>
+    <div class="section-line"></div>
+  </header>
+
+  <div class="skills__grid">
+    @for (category of skillCategories; track category.name) {
+      <div class="skills__category">
+        <h3 class="skills__category-title">{{ category.name }}</h3>
+        <div class="skills__list">
+          @for (skill of category.skills; track skill) {
+            <span class="skill-badge">{{ skill }}</span>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>

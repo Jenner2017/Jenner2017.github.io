@@ -1,1 +1,26 @@
-<p>projects works!</p>
+<section class="projects" aria-labelledby="projects-title">
+  <header class="section-header">
+    <h2 id="projects-title" class="section-title">Projects</h2>
+    <div class="section-line"></div>
+  </header>
+
+  <div class="projects__grid">
+    @for (project of projects; track project.title) {
+      <article class="project-card">
+        <div class="project-card__content">
+          <h3 class="project-card__title">{{ project.title }}</h3>
+          <p class="project-card__description">{{ project.description }}</p>
+          <div class="project-card__tags">
+            @for (tag of project.tags; track tag) {
+              <span class="project-tag">{{ tag }}</span>
+            }
+          </div>
+          <a [href]="project.link" class="project-card__link">
+            View Project
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+    }
+  </div>
+</section>

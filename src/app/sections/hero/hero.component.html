@@ -1,1 +1,85 @@
-<p>hero works!</p>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__ambient" aria-hidden="true">
+    <span class="hero__mesh"></span>
+    <span class="hero__halo hero__halo--left"></span>
+    <span class="hero__halo hero__halo--right"></span>
+  </div>
+
+  <div class="hero__container">
+    <nav class="hero__dock" aria-label="Section navigation">
+      @for (link of sectionLinks; track link.href) {
+        <a
+          class="hero__dock-link"
+          [href]="link.href"
+          [attr.aria-label]="link.label"
+        >
+          <svg 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            stroke-width="1.8" 
+            stroke-linecap="round" 
+            stroke-linejoin="round" 
+            class="hero__dock-icon"
+            aria-hidden="true"
+          >
+            <path [attr.d]="link.icon" />
+          </svg>
+          <span class="hero__dock-tooltip">{{ link.label }}</span>
+        </a>
+      }
+    </nav>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow">
+        <span class="hero__eyebrow-dot"></span>
+        AVAILABLE FOR REMOTE OPPORTUNITIES
+      </p>
+
+      <header class="hero__copy">
+        <h1 id="hero-title" class="hero__title">
+          <span>Jenner Calito</span>
+          <span>Backend Software Engineer</span>
+        </h1>
+
+        <p class="hero__subtitle">
+          Backend Developer | Java & Spring Boot | Angular | PostgreSQL
+        </p>
+
+        <p class="hero__description">
+          I design and build reliable business software with a backend-first
+          mindset, clean architecture, and interfaces that stay easy to use as
+          products grow.
+        </p>
+      </header>
+
+      <div class="hero__meta" aria-label="Key highlights">
+        <article class="hero__meta-card">
+          <span class="hero__meta-value">API-first</span>
+          <p class="hero__meta-copy">Scalable services and maintainable integrations.</p>
+        </article>
+
+        <article class="hero__meta-card">
+          <span class="hero__meta-value">Full-stack aware</span>
+          <p class="hero__meta-copy">Backend architecture with practical Angular delivery.</p>
+        </article>
+      </div>
+
+      <nav class="hero__actions" aria-label="Hero actions">
+        <a
+          class="hero__button hero__button--primary"
+          href="#projects"
+        >
+          View projects
+        </a>
+
+        <a
+          class="hero__button hero__button--secondary"
+          href="#education"
+        >
+          View education
+        </a>
+      </nav>
+    </div>
+  </div>
+</section>

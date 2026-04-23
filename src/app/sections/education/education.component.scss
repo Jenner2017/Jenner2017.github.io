@@ -17,7 +17,7 @@
   border-radius: 2px;
 }
 
-.experience__timeline {
+.education__timeline {
   position: relative;
   max-width: 800px;
   padding-left: 2rem;
@@ -33,7 +33,7 @@
   }
 }
 
-.experience__item {
+.education__item {
   position: relative;
   margin-bottom: 4rem;
 
@@ -42,7 +42,7 @@
   }
 }
 
-.experience__dot {
+.education__dot {
   position: absolute;
   left: calc(-2rem - 6px);
   top: 0.5rem;
@@ -55,7 +55,7 @@
   box-shadow: 0 0 0 4px rgba(107, 114, 128, 0.12);
 }
 
-.experience__period {
+.education__period {
   display: inline-block;
   font-size: 0.875rem;
   font-weight: 700;
@@ -66,21 +66,21 @@
   border-radius: 999px;
 }
 
-.experience__role {
+.education__degree {
   font-size: 1.5rem;
   font-weight: 700;
   color: #111827;
   margin: 0.5rem 0 0.25rem;
 }
 
-.experience__company {
+.education__institution {
   font-size: 1.125rem;
   font-weight: 600;
   color: #4b5563;
   margin-bottom: 1rem;
 }
 
-.experience__description {
+.education__description {
   font-size: 1.125rem;
   line-height: 1.8;
   color: #6b7280;
@@ -90,8 +90,8 @@
   .section-title {
     font-size: 2rem;
   }
-  
-  .experience__role {
+
+  .education__degree {
     font-size: 1.25rem;
   }
 }
