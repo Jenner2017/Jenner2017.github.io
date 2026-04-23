@@ -5,9 +5,30 @@
   <title>PortfolioSite</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbfaf7">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-<style>html{scroll-behavior:smooth;background:#fbfaf7;overflow-x:clip}body{margin:0;background:#fbfaf7;overflow-x:clip}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}</style><link rel="stylesheet" href="styles-N47TTNZM.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-N47TTNZM.css"></noscript></head>
+  <script>
+    (function () {
+      var storageKey = 'portfolio-theme';
+      var root = document.documentElement;
+      var storedTheme = null;
+
+      try {
+        storedTheme = localStorage.getItem(storageKey);
+      } catch (error) {
+        storedTheme = null;
+      }
+
+      var systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = storedTheme === 'light' || storedTheme === 'dark'
+        ? storedTheme
+        : (systemPrefersDark ? 'dark' : 'light');
+
+      root.dataset.theme = theme;
+    })();
+  </script>
+<style>:root{color-scheme:light;--canvas:#fbfaf7;--canvas-alt:#f4f1eb;--surface-glass:rgba(255, 255, 255, .72);--surface-glass-strong:rgba(255, 255, 255, .9);--surface-card:rgba(255, 255, 255, .92);--surface-card-muted:#f3f4f6;--surface-pill:rgba(243, 244, 246, .82);--text-primary:#111827;--text-secondary:#4b5563;--text-tertiary:#6b7280;--text-muted:#7b8591;--border-soft:rgba(17, 24, 39, .08);--border-standard:rgba(17, 24, 39, .12);--border-strong:rgba(17, 24, 39, .18);--accent:#6b7280;--accent-soft:rgba(107, 114, 128, .14);--accent-neutral:#6b7280;--accent-neutral-soft:rgba(107, 114, 128, .12);--focus-ring:rgba(107, 114, 128, .22);--tooltip-bg:#111827;--tooltip-fg:#f8fafc;--hero-grid:rgba(18, 20, 23, .035);--hero-glow-left:rgba(244, 214, 168, .22);--hero-glow-right:rgba(37, 99, 235, .12);--shadow-soft:0 10px 30px -10px rgba(0, 0, 0, .08);--shadow-lift:0 18px 40px rgba(18, 20, 23, .06)}html{scroll-behavior:smooth;background:var(--canvas);overflow-x:clip}body{margin:0;background:radial-gradient(circle at top,rgba(255,255,255,.24),transparent 28%),linear-gradient(180deg,var(--canvas) 0%,var(--canvas-alt) 100%);color:var(--text-primary);overflow-x:clip;font-family:Inter,Segoe UI,sans-serif;transition:background-color .28s cubic-bezier(.22,1,.36,1),color .28s cubic-bezier(.22,1,.36,1)}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}</style><link rel="stylesheet" href="styles-HYAWSXGH.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-HYAWSXGH.css"></noscript></head>
 <body>
   <app-root></app-root>
-<script src="polyfills-5FDKUQTZ.js" type="module"></script><script src="main-4XUCZ3ZP.js" type="module"></script></body>
+<script src="polyfills-5FDKUQTZ.js" type="module"></script><script src="main-HYMZXFDO.js" type="module"></script></body>
 </html>
