@@ -15,12 +15,54 @@
               <span class="project-tag">{{ tag }}</span>
             }
           </div>
-          <a [href]="project.link" class="project-card__link">
+          <button type="button" class="project-card__link" (click)="openProjectModal(project)">
             View Project
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          </button>
         </div>
       </article>
     }
   </div>
+
+  @if (selectedProject; as project) {
+    <div
+      class="project-modal-backdrop"
+      [class.project-modal-backdrop--closing]="isProjectModalClosing"
+      (click)="closeProjectModal()"
+      (animationend)="finishProjectModalClose($event)"
+    >
+      <article
+        class="project-modal"
+        [class.project-modal--closing]="isProjectModalClosing"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-modal-title"
+        (click)="$event.stopPropagation()"
+      >
+        <div class="project-modal__header">
+          <span class="project-modal__eyebrow">Private case file</span>
+          <button
+            type="button"
+            class="project-modal__close"
+            aria-label="Close project details"
+            (click)="closeProjectModal()"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+
+        <div class="project-modal__body">
+          <span class="project-modal__badge">Private / Confidential</span>
+          <h3 id="project-modal-title" class="project-modal__title">{{ project.title }}</h3>
+          <p class="project-modal__description">{{ project.description }}</p>
+        </div>
+
+        <footer class="project-modal__footer">
+          <p class="project-modal__note">
+            This project belongs to a private institutional environment, so a public demo or repository cannot be shared.
+          </p>
+        </footer>
+      </article>
+    </div>
+  }
 </section>
