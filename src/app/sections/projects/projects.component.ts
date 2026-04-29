@@ -1,4 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+
+type Project = {
+  title: string;
+  description: string;
+  tags: string[];
+  link: string;
+};
 
 @Component({
   selector: 'app-projects',
@@ -7,7 +14,10 @@ import { Component } from '@angular/core';
   standalone: true
 })
 export class ProjectsComponent {
-  protected readonly projects = [
+  protected selectedProject: Project | null = null;
+  protected isProjectModalClosing = false;
+
+  protected readonly projects: Project[] = [
     {
       title: 'RTU Digital',
       description: 'Digital procedures management system with REST service integration and microservices architecture for the Superintendencia de Administración Tributaria (SAT).',
@@ -46,4 +56,30 @@ export class ProjectsComponent {
     }
   ];
 
+  protected openProjectModal(project: Project): void {
+    this.isProjectModalClosing = false;
+    this.selectedProject = project;
+  }
+
+  protected closeProjectModal(): void {
+    if (!this.selectedProject || this.isProjectModalClosing) {
+      return;
+    }
+
+    this.isProjectModalClosing = true;
+  }
+
+  protected finishProjectModalClose(event: AnimationEvent): void {
+    if (event.target !== event.currentTarget || !this.isProjectModalClosing) {
+      return;
+    }
+
+    this.selectedProject = null;
+    this.isProjectModalClosing = false;
+  }
+
+  @HostListener('document:keydown.escape')
+  protected closeModalOnEscape(): void {
+    this.closeProjectModal();
+  }
 }
