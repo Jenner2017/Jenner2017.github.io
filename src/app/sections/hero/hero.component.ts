@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { ThemeService } from '../../core/services/theme.service';
+
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.component.html',
@@ -8,6 +10,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroComponent {
+  protected readonly moonIcon = 'M17.2 15.1A6.5 6.5 0 0 1 8.9 6.8a7.4 7.4 0 1 0 8.3 8.3Z';
+  protected readonly sunIcon = 'M12 3v2.2M12 18.8V21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M3 12h2.2M18.8 12H21M5.6 18.4l1.6-1.6M16.8 7.2l1.6-1.6M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z';
   protected readonly sectionLinks = [
     { 
       href: '#', 
@@ -40,4 +44,6 @@ export class HeroComponent {
       icon: 'M3.75 8.25 12 4.5l8.25 3.75L12 12 3.75 8.25Zm1.5 2.84v4.185c0 .429.229.826.6 1.039 3.936 2.265 8.814 2.265 12.75 0 .371-.213.6-.61.6-1.039V11.09'
     }
   ];
+
+  constructor(protected readonly themeService: ThemeService) {}
 }

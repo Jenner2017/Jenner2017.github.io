@@ -22,4 +22,14 @@ describe('SkillsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render skill categories and badges', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.querySelector('#skills-title')?.textContent).toContain('Skills');
+    expect(compiled.textContent).toContain('Backend');
+    expect(compiled.textContent).toContain('Frontend');
+    expect(compiled.textContent).toContain('Tools & DevOps');
+    expect(compiled.querySelectorAll('.skill-badge').length).toBe(17);
+  });
 });

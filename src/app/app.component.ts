@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +12,5 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   imports: [RouterOutlet, FooterComponent]
 })
 export class AppComponent {
-  title = 'portfolio-site';
+  constructor(private readonly themeService: ThemeService) {}
 }
