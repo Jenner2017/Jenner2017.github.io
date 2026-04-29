@@ -22,4 +22,13 @@ describe('EducationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render education entries', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.querySelector('#education-title')?.textContent).toContain('Education');
+    expect(compiled.querySelectorAll('.education__item').length).toBe(2);
+    expect(compiled.textContent).toContain('Master of Science in Information Security');
+    expect(compiled.textContent).toContain('Mariano Gálvez University of Guatemala');
+  });
 });

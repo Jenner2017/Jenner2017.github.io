@@ -7,13 +7,13 @@
   font-weight: 800;
   letter-spacing: -0.02em;
   margin: 0 0 1rem;
-  color: #111827;
+  color: var(--text-primary);
 }
 
 .section-line {
   width: 3rem;
   height: 4px;
-  background: #6b7280;
+  background: var(--accent-neutral);
   border-radius: 2px;
 }
 
@@ -24,11 +24,11 @@
 }
 
 .project-card {
-  background: #ffffff;
+  background: var(--surface-card);
   border-radius: 2rem;
   padding: 2.5rem;
-  border: 1px solid rgba(17, 24, 39, 0.1);
-  box-shadow: none;
+  border: 1px solid var(--border-standard);
+  box-shadow: var(--shadow-soft);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
@@ -36,15 +36,15 @@
 
   &:hover {
     transform: translateY(-4px);
-    border-color: rgba(17, 24, 39, 0.18);
-    box-shadow: none;
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-lift);
   }
 }
 
 .project-card__title {
   font-size: 1.75rem;
   font-weight: 800;
-  color: #111827;
+  color: var(--text-primary);
   margin-bottom: 1rem;
   letter-spacing: -0.01em;
 }
@@ -52,7 +52,7 @@
 .project-card__description {
   font-size: 1.125rem;
   line-height: 1.7;
-  color: #4b5563;
+  color: var(--text-secondary);
   margin-bottom: 2rem;
 }
 
@@ -66,8 +66,8 @@
 .project-tag {
   font-size: 0.75rem;
   font-weight: 700;
-  color: #6b7280;
-  background: #f3f4f6;
+  color: var(--text-tertiary);
+  background: var(--surface-pill);
   padding: 0.35rem 0.75rem;
   border-radius: 0.5rem;
   text-transform: uppercase;
@@ -79,7 +79,7 @@
   align-items: center;
   gap: 0.5rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--text-primary);
   text-decoration: none;
   transition: gap 0.2s ease;
 
@@ -91,7 +91,7 @@
 
   &:hover {
     gap: 0.75rem;
-    color: #6b7280;
+    color: var(--accent);
 
     svg {
       transform: translateX(2px);

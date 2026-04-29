@@ -22,4 +22,13 @@ describe('FooterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render the contact email link', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    const link = compiled.querySelector('.footer__link') as HTMLAnchorElement;
+
+    expect(compiled.textContent).toContain('Built with Angular');
+    expect(link.textContent).toContain('jennercalito2016@gmail.com');
+    expect(link.getAttribute('href')).toBe('mailto:jennercalito2016@gmail.com');
+  });
 });

@@ -7,13 +7,13 @@
   font-weight: 800;
   letter-spacing: -0.02em;
   margin: 0 0 1rem;
-  color: #111827;
+  color: var(--text-primary);
 }
 
 .section-line {
   width: 3rem;
   height: 4px;
-  background: #6b7280;
+  background: var(--accent-neutral);
   border-radius: 2px;
 }
 
@@ -29,7 +29,7 @@
     top: 0;
     bottom: 0;
     width: 2px;
-    background: rgba(17, 24, 39, 0.08);
+    background: var(--border-standard);
   }
 }
 
@@ -48,42 +48,42 @@
   top: 0.5rem;
   width: 12px;
   height: 12px;
-  background: #6b7280;
-  border: 4px solid #fbfaf7;
+  background: var(--accent);
+  border: 4px solid var(--canvas);
   border-radius: 50%;
   z-index: 1;
-  box-shadow: 0 0 0 4px rgba(107, 114, 128, 0.12);
+  box-shadow: 0 0 0 4px var(--accent-neutral-soft);
 }
 
 .education__period {
   display: inline-block;
   font-size: 0.875rem;
   font-weight: 700;
-  color: #6b7280;
+  color: var(--accent);
   margin-bottom: 0.5rem;
   padding: 0.25rem 0.75rem;
-  background: #f3f4f6;
+  background: var(--surface-pill);
   border-radius: 999px;
 }
 
 .education__degree {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--text-primary);
   margin: 0.5rem 0 0.25rem;
 }
 
 .education__institution {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #4b5563;
+  color: var(--text-secondary);
   margin-bottom: 1rem;
 }
 
 .education__description {
   font-size: 1.125rem;
   line-height: 1.8;
-  color: #6b7280;
+  color: var(--text-tertiary);
 }
 
 @media (max-width: 640px) {

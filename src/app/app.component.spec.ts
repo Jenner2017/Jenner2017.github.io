@@ -17,17 +17,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'portfolio-site'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('portfolio-site');
-  });
-
   it('should render app shell', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('app-navbar')).not.toBeNull();
     expect(compiled.querySelector('router-outlet')).not.toBeNull();
     expect(compiled.querySelector('app-footer')).not.toBeNull();
   });

@@ -3,10 +3,11 @@
 }
 
 .home {
-  background: #fbfaf7;
-  color: #111827;
+  background: transparent;
+  color: var(--text-primary);
   scroll-behavior: smooth;
   min-height: 100vh;
+  transition: color 280ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .home__section {
