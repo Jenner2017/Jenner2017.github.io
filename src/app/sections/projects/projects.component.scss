@@ -17,13 +17,71 @@
   border-radius: 2px;
 }
 
-.projects__grid {
+.projects__carousel {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5rem;
+  gap: 1.25rem;
+}
+
+.projects__viewport {
+  --project-gap: 1.5rem;
+  --project-gap-space: 3rem;
+  --project-card-width: calc((100% - var(--project-gap-space)) / 3);
+
+  overflow: hidden;
+  padding: 0.25rem;
+}
+
+.projects__track {
+  display: flex;
+  gap: var(--project-gap);
+
+  &--transitioning {
+    transition: transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  &--resetting {
+    transition: none;
+  }
+}
+
+.projects__controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.85rem;
+}
+
+.projects__nav-button {
+  display: inline-grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--border-standard);
+  border-radius: 999px;
+  background: var(--surface-pill);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+
+  svg {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  &:hover {
+    border-color: var(--border-strong);
+    color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 0.25rem;
+  }
 }
 
 .project-card {
+  flex: 0 0 var(--project-card-width);
   background: var(--surface-card);
   border-radius: 2rem;
   padding: 2.5rem;
@@ -33,12 +91,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 100%;
 
   &:hover {
     transform: translateY(-4px);
     border-color: var(--border-strong);
     box-shadow: var(--shadow-lift);
   }
+}
+
+.project-card--buffer {
+  pointer-events: none;
 }
 
 .project-card__title {
@@ -78,9 +141,16 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  align-self: flex-start;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
   font-weight: 700;
   color: var(--text-primary);
+  font: inherit;
   text-decoration: none;
+  cursor: pointer;
   transition: gap 0.2s ease;
 
   svg {
@@ -97,11 +167,202 @@
       transform: translateX(2px);
     }
   }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 0.35rem;
+    border-radius: 0.5rem;
+  }
+}
+
+.project-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: color-mix(in srgb, var(--bg-primary) 58%, transparent);
+  backdrop-filter: blur(18px) saturate(1.15);
+  animation: modal-backdrop-in 180ms ease-out;
+
+  &--closing {
+    animation: modal-backdrop-out 180ms ease-in forwards;
+  }
+}
+
+.project-modal {
+  position: relative;
+  width: min(100%, 42rem);
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: 2.25rem;
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 16%, transparent), transparent 42%),
+    var(--surface-card);
+  box-shadow: var(--shadow-lift);
+  animation: modal-panel-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  &--closing {
+    animation: modal-panel-out 180ms ease-in forwards;
+  }
+}
+
+.project-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.75rem 2rem 0;
+}
+
+.project-modal__eyebrow {
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.project-modal__close {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--border-standard);
+  border-radius: 999px;
+  background: var(--surface-pill);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 0;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+
+  span {
+    display: block;
+    line-height: 1;
+    transform: translateY(-0.06em);
+  }
+
+  &:hover {
+    border-color: var(--border-strong);
+    color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 0.2rem;
+  }
+}
+
+.project-modal__body {
+  padding: 1.75rem 2rem 0;
+}
+
+.project-modal__badge {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 36%, var(--border-standard));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface-pill));
+  color: var(--text-primary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-modal__title {
+  margin: 0 0 1.25rem;
+  color: var(--text-primary);
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 850;
+  letter-spacing: -0.03em;
+}
+
+.project-modal__description,
+.project-modal__note {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+.project-modal__footer {
+  margin: 2rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--border-standard);
+  border-radius: 1.25rem;
+  background: color-mix(in srgb, var(--surface-pill) 82%, transparent);
+}
+
+.project-modal__note {
+  color: var(--text-tertiary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+@keyframes modal-backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+}
+
+@keyframes modal-backdrop-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-panel-out {
+  to {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
 }
 
 @media (max-width: 640px) {
+  .projects__carousel {
+    gap: 1rem;
+  }
+
+  .projects__viewport {
+    --project-gap: 1rem;
+    --project-gap-space: 0rem;
+    --project-card-width: 100%;
+  }
+
   .project-card {
     padding: 2rem;
+  }
+
+  .project-modal-backdrop {
+    align-items: end;
+    padding: 1rem;
+  }
+
+  .project-modal {
+    border-radius: 1.5rem;
+  }
+
+  .project-modal__header,
+  .project-modal__body {
+    padding-inline: 1.25rem;
+  }
+
+  .project-modal__footer {
+    margin: 1.5rem 1.25rem 1.25rem;
   }
   
   .section-title {
